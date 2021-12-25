@@ -1,0 +1,33 @@
+class quest():
+    def __init__(self, text, value = False):
+        self.text = str(text)
+        self.value = bool(value)
+
+def main():
+    questions = [quest("Менее 30% пропусков?"),
+    quest("Пройдены все практики?"),
+    quest("Студент сдал все экзамены и получил все зачёты?"),
+    quest("Пройдены все промежуточные аттестатции?"),
+    quest("Оплатил обучение?(для платников)")]
+
+    for i in questions:
+        print(i.text)
+        try:
+            i.value = bool(input("Enter - Нет.\n* - Да.\n> "))
+        except:
+            i.value = False
+
+    k = 0
+    for i in questions:
+        if i.value:
+                k += 1
+
+    if questions.__len__() == k:
+        print("Студент перейдёт на следующий курс.")
+    elif k > 0:
+        print("Студент возможно перейдёт следующий курс с долгами.")
+    else :
+        print("Студент не перейдёт на следующий курс.")
+
+if __name__ == "__main__":
+    main()
